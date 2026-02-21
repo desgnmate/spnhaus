@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -59,7 +60,7 @@ export default function Services() {
         return () => ctx.revert();
     }, []);
 
-    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>, image: string) => {
+    const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
         const el = e.currentTarget;
         const originalText = el.querySelector(".original-text");
         const duplicateText = el.querySelector(".duplicate-text");
@@ -67,8 +68,31 @@ export default function Services() {
         
         // Update preview image
         if (previewRef.current) {
-            const img = previewRef.current.querySelector("img");
-            if (img) img.src = image;
+            const images = previewRef.current.querySelectorAll(".service-preview-img");
+            
+            // Hide all images first
+            gsap.set(images, { zIndex: 0 });
+            
+            // Show current image
+            if (images[index]) {
+                gsap.set(images[index], { zIndex: 1 });
+                gsap.to(images[index], {
+                    opacity: 1,
+                    duration: 0.2,
+                    ease: "power2.out"
+                });
+                
+                // Hide others
+                images.forEach((img, i) => {
+                    if (i !== index) {
+                        gsap.to(img, {
+                            opacity: 0,
+                            duration: 0.2,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            }
             
             gsap.to(previewRef.current, {
                 opacity: 1,
@@ -183,12 +207,19 @@ export default function Services() {
                 className="absolute top-0 left-0 w-[300px] h-[200px] pointer-events-none z-30 opacity-0 scale-95 hidden md:block"
                 style={{ transform: "translate(-50%, -50%)" }}
             >
-                <div className="w-full h-full overflow-hidden">
-                    <img 
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
-                        alt="Service preview" 
-                        className="w-full h-full object-cover"
-                    />
+                <div className="w-full h-full overflow-hidden relative bg-gray-900">
+                    {services.map((service, i) => (
+                        <div key={i} className="absolute inset-0 w-full h-full service-preview-img opacity-0">
+                            <Image
+                                src={service.image}
+                                alt={service.title}
+                                fill
+                                sizes="300px"
+                                className="object-cover"
+                                priority={i < 2} // Prioritize first few images
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
 
@@ -206,7 +237,7 @@ export default function Services() {
                         <div
                             key={i}
                             className="service-row relative flex justify-between items-center py-6 md:py-7 px-5 border-t border-white/[0.12] transition-colors group cursor-pointer w-full"
-                            onMouseEnter={(e) => handleMouseEnter(e, service.image)}
+                            onMouseEnter={(e) => handleMouseEnter(e, i)}
                             onMouseLeave={handleMouseLeave}
                             style={{ borderBottom: i === services.length - 1 ? "1px solid rgba(255,255,255,0.12)" : undefined }}
                         >

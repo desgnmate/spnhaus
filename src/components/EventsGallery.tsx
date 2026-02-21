@@ -1,29 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const events = [
     {
         title: "AKIRA'S ARCADE",
-        image:
-            "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80",
+        image: "/images/events/akiras-arcade.jpg",
     },
     {
-        title: "MIDNIGHT SESSIONS",
-        image:
-            "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=700&q=80",
+        title: "HOWLER",
+        image: "/images/events/howler.jpg",
     },
     {
-        title: "ROOFTOP VIBES",
-        image:
-            "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=700&q=80",
+        title: "AKIRA'S ARCADE",
+        image: "/images/events/akiras-arcade.jpg",
     },
     {
-        title: "WAREHOUSE 808",
-        image:
-            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=700&q=80",
+        title: "HOWLER",
+        image: "/images/events/howler.jpg",
     },
 ];
 
@@ -112,12 +109,13 @@ export default function EventsGallery() {
                         <div key={i} className="event-card group cursor-pointer w-[60vw] md:w-[30vw] lg:w-[22vw] flex-shrink-0">
                             <div className="transition-transform duration-500 ease-out group-hover:-translate-y-3">
                                 <div className="relative overflow-hidden aspect-[3/4] mb-4">
-                                    <img
+                                    <Image
                                         src={event.image}
                                         alt={event.title}
-                                        className="w-full h-full object-cover img-zoom"
+                                        fill
+                                        sizes="(max-width: 768px) 60vw, (max-width: 1200px) 30vw, 22vw"
+                                        className="object-cover img-zoom"
                                         style={{ filter: "grayscale(100%) brightness(0.7)" }}
-                                        loading="lazy"
                                     />
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
                                 </div>
