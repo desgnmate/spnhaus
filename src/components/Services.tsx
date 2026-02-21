@@ -7,27 +7,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const services = [
     {
         title: "BUSINESS LAUNCHES",
-        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
+        image: "/images/services/Business Launches.jpeg"
     },
     {
         title: "PRIVATE EVENTS",
-        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80"
+        image: "/images/services/Private Events.jpg"
     },
     {
         title: "CORPORATE EVENTS",
-        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80"
+        image: "/images/services/Corporate Events.jpg"
     },
     {
         title: "WEDDINGS",
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+        image: "/images/services/Weddings.jpg"
     },
     {
         title: "DAY PARTIES & BRUNCH PARTIES",
-        image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80"
+        image: "/images/services/Day Parties & Brunch Parties.jpg"
     },
     {
         title: "COMMUNITY EVENTS / FUNDRAISERS",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
+        image: "/images/services/Community Events:Fundraisers.jpg"
     },
 ];
 

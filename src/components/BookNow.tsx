@@ -26,7 +26,7 @@ export default function BookNow() {
                 {/* Form Card */}
                 <div className="w-full max-w-2xl bg-black p-8 md:p-16 relative border border-white/10 shadow-2xl">
                     <h2 
-                        className="font-druk text-3xl md:text-5xl lg:text-6xl uppercase mb-12 text-center"
+                        className="font-druk text-2xl md:text-4xl lg:text-5xl uppercase mb-10 text-center"
                         style={{ letterSpacing: "0.02em" }}
                     >
                         Shoot us a message!

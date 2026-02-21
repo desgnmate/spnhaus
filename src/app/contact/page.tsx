@@ -75,12 +75,6 @@ function ContactNavbar() {
                 >
                     CONTACT
                 </Link>
-                <a
-                    href="#"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
-                >
-                    FOLLOW US
-                </a>
                 <Link
                     href="/book"
                     className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"

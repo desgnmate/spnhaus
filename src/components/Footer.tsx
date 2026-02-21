@@ -72,21 +72,12 @@ export default function Footer() {
                         SPNHAUS’ mission is to merge music, art, culture, and storytelling into one connected ecosystem.
                     </p>
 
-                    {/* Links */}
-                    <div className="flex gap-8 md:gap-12">
-                        <a 
-                            href="/contact" 
-                            className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
-                        >
-                            CONTACT
-                        </a>
-                        <a 
-                            href="/book" 
-                            className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
-                        >
-                            BOOK US
-                        </a>
-                    </div>
+                    <a 
+                        href="https://www.instagram.com/spnhaus/"
+                        className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
+                    >
+                        FOLLOW US ON INSTAGRAM
+                    </a>
                 </div>
             </div>
         </footer>

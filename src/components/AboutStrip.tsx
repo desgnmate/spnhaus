@@ -6,29 +6,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const team = [
     {
-        src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=500&q=80",
-        name: "ALEX CHEN",
+        src: "/images/about/Lec.jpg",
+        name: "SOME GUY NAMED LEC",
         role: "FOUNDER / DJ"
     },
     {
-        src: "https://images.unsplash.com/photo-1504680177321-2e6a879aac86?w=500&q=80",
-        name: "SARAH WU",
-        role: "CREATIVE DIRECTOR"
+        src: "/images/about/Tole.jpg",
+        name: "TOLE",
+        role: "DJ"
     },
     {
-        src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&q=80",
-        name: "MARCUS LEE",
-        role: "AUDIO ENGINEER"
+        src: "/images/about/Sochu.jpg",
+        name: "SOCHU",
+        role: "DJ"
     },
     {
-        src: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500&q=80",
-        name: "JESSICA KIM",
-        role: "EVENT MANAGER"
+        src: "/images/about/5600k.jpg",
+        name: "5600K",
+        role: "DJ"
     },
     {
-        src: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&q=80",
-        name: "DAVID PARK",
-        role: "LIGHTING DESIGNER"
+        src: "/images/about/Jkongerz.jpg",
+        name: "JKONGERZ",
+        role: "DJ"
     },
 ];
 
@@ -85,7 +85,13 @@ export default function AboutStrip() {
                     <div key={i} className="group relative flex-1 overflow-hidden h-full border-r border-white/10 last:border-r-0">
                         {/* Hidden Text Revealed on Hover */}
                         <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-0 flex flex-col justify-end h-[200px]">
-                            <h3 className="text-white font-druk text-xl md:text-2xl uppercase tracking-wide mb-1">
+                            <h3
+                                className={`text-white font-druk uppercase tracking-wide mb-1 ${
+                                    member.name === "SOME GUY NAMED LEC"
+                                        ? "text-sm md:text-base tracking-tight"
+                                        : "text-xl md:text-2xl"
+                                }`}
+                            >
                                 {member.name}
                             </h3>
                             <p className="text-white/60 font-medium text-xs md:text-sm tracking-widest uppercase">
@@ -99,7 +105,10 @@ export default function AboutStrip() {
                                 src={member.src}
                                 alt={member.name}
                                 className="strip-img w-full h-full object-cover"
-                                style={{ filter: "grayscale(100%) brightness(0.7)" }}
+                                style={{
+                                    filter: "grayscale(100%) brightness(0.7)",
+                                    transform: member.name === "5600K" ? "scale(1.2)" : undefined
+                                }}
                                 loading="lazy"
                             />
                         </div>

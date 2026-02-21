@@ -155,12 +155,6 @@ export default function Hero() {
                         CONTACT
                     </a>
                     <a
-                        href="#"
-                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors"
-                    >
-                        FOLLOW US
-                    </a>
-                    <a
                         href="/book"
                         className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors"
                     >

@@ -35,12 +35,6 @@ function BookNavbar() {
                     CONTACT
                 </a>
                 <a
-                    href="#"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
-                >
-                    FOLLOW US
-                </a>
-                <a
                     href="/book"
                     className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
                 >
