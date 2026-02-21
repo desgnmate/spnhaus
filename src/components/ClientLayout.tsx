@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import LoadingScreen from "./LoadingScreen";
+import { LoadingProvider, useLoading } from "@/context/LoadingContext";
 
-export default function ClientLayout({
+function ClientContent({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useLoading();
 
   // Prevent scrolling while loading
   useEffect(() => {
@@ -27,5 +28,17 @@ export default function ClientLayout({
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       {children}
     </>
+  );
+}
+
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <LoadingProvider>
+      <ClientContent>{children}</ClientContent>
+    </LoadingProvider>
   );
 }
