@@ -1,0 +1,76 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export default function Intro() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const ctx = gsap.context(() => {
+            if (textRef.current && containerRef.current) {
+                const words = textRef.current.querySelectorAll(".word");
+                
+                // Initial state
+                gsap.set(words, { opacity: 0, filter: "blur(10px)" });
+
+                // Create a timeline that is controlled by the ScrollTrigger
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top top",      // Start when the top of section hits top of viewport
+                        end: "+=150%",         // Pin duration (adjust for scroll length)
+                        pin: true,             // Pin the section
+                        scrub: 1,              // Smooth scrubbing
+                    }
+                });
+
+                // Animate words to opacity 1 and clear blur sequentially
+                tl.to(words, {
+                    opacity: 1,
+                    filter: "blur(0px)",
+                    stagger: 0.1,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    const content = "SPNHAUS is a DJ collective that brings music to spaces with intention. We throw curated events in unique spots — from art galleries to arcades — we're always focused on good sound, good energy, and good people.";
+    
+    // Split text but keep SPNHAUS separate if needed, or just split by space
+    const words = content.split(" ");
+
+    return (
+        <section
+            ref={containerRef}
+            className="relative bg-black h-screen flex items-center justify-center px-6 md:px-12"
+        >
+            <div className="max-w-4xl mx-auto text-center">
+                <p 
+                    ref={textRef}
+                    className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight text-white font-druk"
+                >
+                    {words.map((word, i) => {
+                        const isBrandName = word === "SPNHAUS";
+                        return (
+                            <span 
+                                key={i} 
+                                className={`word inline-block mr-[0.25em] ${isBrandName ? "text-white" : "text-white/90"}`}
+                            >
+                                {word}
+                            </span>
+                        );
+                    })}
+                </p>
+            </div>
+        </section>
+    );
+}
