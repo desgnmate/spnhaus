@@ -84,8 +84,8 @@ export default function BookNow() {
                 <p className="max-w-md text-xs md:text-sm font-space-grotesk text-white/60 leading-relaxed pointer-events-auto">
                     SPNHAUS’ mission is to merge music, art, culture, and storytelling into one connected ecosystem.
                 </p>
-                <a href="#contact" className="text-sm md:text-base font-medium font-space-grotesk text-white uppercase tracking-widest mt-4 md:mt-0 pointer-events-auto hover:opacity-70 transition-colors">
-                    CONTACT
+                <a href="https://www.instagram.com/spnhaus/" className="text-sm md:text-base font-medium font-space-grotesk text-white uppercase tracking-widest mt-4 md:mt-0 pointer-events-auto hover:opacity-70 transition-colors">
+                    FOLLOW US ON INSTAGRAM
                 </a>
             </div>
 
