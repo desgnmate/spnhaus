@@ -8,13 +8,11 @@ import Services from "@/components/Services";
 import AboutStrip from "@/components/AboutStrip";
 import Story from "@/components/Story";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import GrainOverlay from "@/components/GrainOverlay";
 
 export default function Home() {
   return (
     <main className="relative">
-      <CustomCursor />
       <GrainOverlay />
       <Hero />
       <Intro />

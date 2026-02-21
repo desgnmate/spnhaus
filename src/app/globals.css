@@ -134,39 +134,7 @@ body::after {
 }
 
 /* ---------- Custom Cursor ---------- */
-.cursor-dot {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  box-shadow: 0 0 0 1px #000;
-  mix-blend-mode: normal;
-  transition: transform 0.15s ease, opacity 0.2s ease;
-}
-
-.cursor-ring {
-  width: 28px;
-  height: 28px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  background: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 0 1px #000;
-  mix-blend-mode: normal;
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
-}
-
-.cursor-ring.hovering {
-  width: 44px;
-  height: 44px;
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-}
+/* Cursor logic is now handled in CustomCursor.tsx using Tailwind classes */
 
 /* ---------- Link underline animation ---------- */
 .link-hover {
