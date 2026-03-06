@@ -31,16 +31,16 @@ export default function Footer() {
     }, []);
 
     return (
-        <footer 
+        <footer
             id="contact"
             ref={containerRef}
             className="relative w-full h-screen overflow-hidden bg-black text-white"
         >
             {/* Background Image */}
             <div className="absolute inset-0 z-0 grayscale">
-                <img 
-                    src="/images/footer-bg.jpg" 
-                    alt="Crowd background" 
+                <img
+                    src="/images/footer-bg.jpg"
+                    alt="Crowd background"
                     className="w-full h-full object-cover opacity-60"
                 />
                 <div className="absolute inset-0 bg-black/20" />
@@ -48,18 +48,14 @@ export default function Footer() {
 
             {/* Content Container */}
             <div className="relative z-10 w-full h-full flex flex-col justify-end pb-12 px-6 md:px-12">
-                
+
                 {/* Large SPNHAUS Text */}
-                <div 
+                <div
                     ref={textRef}
                     className="w-full flex justify-center items-end"
                 >
-                    <h1 
-                        className="font-druk font-black text-white leading-none tracking-tight w-full text-center"
-                        style={{
-                            fontSize: "clamp(60px, 22vw, 235px)",
-                            marginBottom: "-0.05em"
-                        }}
+                    <h1
+                        className="font-druk font-black text-white leading-none tracking-tight w-full text-center text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] mb-[-0.05em]"
                     >
                         SPNHAUS
                     </h1>
@@ -72,7 +68,7 @@ export default function Footer() {
                         SPNHAUS’ mission is to merge music, art, culture, and storytelling into one connected ecosystem.
                     </p>
 
-                    <a 
+                    <a
                         href="https://www.instagram.com/spnhaus/"
                         className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
                     >

@@ -14,7 +14,7 @@ export default function Intro() {
         const ctx = gsap.context(() => {
             if (textRef.current && containerRef.current) {
                 const words = textRef.current.querySelectorAll(".word");
-                
+
                 // Initial state
                 gsap.set(words, { opacity: 0, filter: "blur(10px)" });
 
@@ -44,7 +44,7 @@ export default function Intro() {
     }, []);
 
     const content = "SPNHAUS is a DJ collective that brings music to spaces with intention. We throw curated events in unique spots — from art galleries to arcades — we're always focused on good sound, good energy, and good people.";
-    
+
     // Split text but keep SPNHAUS separate if needed, or just split by space
     const words = content.split(" ");
 
@@ -54,15 +54,15 @@ export default function Intro() {
             className="relative bg-black h-screen flex items-center justify-center px-6 md:px-12"
         >
             <div className="max-w-4xl mx-auto text-center">
-                <p 
+                <p
                     ref={textRef}
-                    className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight text-white font-druk"
+                    className="text-lg md:text-2xl lg:text-3xl font-bold leading-relaxed text-white font-space-grotesk"
                 >
                     {words.map((word, i) => {
                         const isBrandName = word === "SPNHAUS";
                         return (
-                            <span 
-                                key={i} 
+                            <span
+                                key={i}
                                 className={`word inline-block mr-[0.25em] ${isBrandName ? "text-white" : "text-white/90"}`}
                             >
                                 {word}

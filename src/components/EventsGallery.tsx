@@ -37,7 +37,7 @@ export default function EventsGallery() {
                 const scrollWidth = wrapperRef.current.scrollWidth;
                 const clientWidth = containerRef.current.clientWidth;
                 // Add padding buffer (96px = 48px left + 48px right approx) to ensure last card clears the edge
-                const paddingBuffer = 96; 
+                const paddingBuffer = 96;
                 const x = -(scrollWidth - clientWidth + paddingBuffer);
 
                 const scrollTween = gsap.timeline({
@@ -51,7 +51,7 @@ export default function EventsGallery() {
                     }
                 });
 
-                scrollTween.fromTo(wrapperRef.current, 
+                scrollTween.fromTo(wrapperRef.current,
                     { x: clientWidth },
                     {
                         x: x,
@@ -66,11 +66,11 @@ export default function EventsGallery() {
                 // Add blur/fade effect to cards as they enter view
                 const cards = wrapperRef.current.querySelectorAll(".event-card");
                 cards.forEach((card) => {
-                    gsap.fromTo(card, 
-                        { 
-                            opacity: 0, 
+                    gsap.fromTo(card,
+                        {
+                            opacity: 0,
                             filter: "blur(10px) grayscale(100%)",
-                            scale: 0.9 
+                            scale: 0.9
                         },
                         {
                             opacity: 1,
@@ -100,15 +100,15 @@ export default function EventsGallery() {
                 <span className="text-[10px] tracking-[0.2em] text-white/30 font-medium uppercase block mb-4">
                     PAST EVENTS
                 </span>
-                <div className="w-8 h-[1px] bg-white/15" />
+                <div className="w-8 h-px bg-white/15" />
             </div>
 
             <div ref={containerRef} className="w-full h-[70vh] flex items-center px-6 md:px-12">
                 <div ref={wrapperRef} className="flex gap-4 md:gap-8 items-center flex-nowrap w-max">
                     {events.map((event, i) => (
-                        <div key={i} className="event-card group cursor-pointer w-[60vw] md:w-[30vw] lg:w-[22vw] flex-shrink-0">
+                        <div key={i} className="event-card group cursor-pointer w-[60vw] md:w-[30vw] lg:w-[22vw] shrink-0">
                             <div className="transition-transform duration-500 ease-out group-hover:-translate-y-3">
-                                <div className="relative overflow-hidden aspect-[3/4] mb-4">
+                                <div className="relative overflow-hidden aspect-3/4 mb-4">
                                     <Image
                                         src={event.image}
                                         alt={event.title}

@@ -42,7 +42,7 @@ export default function AboutStrip() {
         const ctx = gsap.context(() => {
             // Horizontal text shift on scroll
             if (textRef.current) {
-                gsap.fromTo(textRef.current, 
+                gsap.fromTo(textRef.current,
                     { x: 0 },
                     {
                         x: 0, // Keep static or add subtle movement if desired
@@ -86,11 +86,10 @@ export default function AboutStrip() {
                         {/* Hidden Text Revealed on Hover */}
                         <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-0 flex flex-col justify-end h-[200px]">
                             <h3
-                                className={`text-white font-druk uppercase tracking-wide mb-1 ${
-                                    member.name === "SOME GUY NAMED LEC"
+                                className={`text-white font-druk uppercase tracking-wide mb-1 ${member.name === "SOME GUY NAMED LEC"
                                         ? "text-sm md:text-base tracking-tight"
                                         : "text-xl md:text-2xl"
-                                }`}
+                                    }`}
                             >
                                 {member.name}
                             </h3>
@@ -122,13 +121,7 @@ export default function AboutStrip() {
                 className="absolute inset-0 flex items-start justify-center pointer-events-none mix-blend-exclusion z-20 pt-[10vh]"
             >
                 <span
-                    className="whitespace-nowrap font-druk text-white"
-                    style={{
-                        fontSize: "clamp(60px, 15vw, 215px)",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.02em",
-                        lineHeight: 1,
-                    }}
+                    className="whitespace-nowrap font-druk text-white text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] leading-none uppercase tracking-[0.02em]"
                 >
                     ABOUT US
                 </span>

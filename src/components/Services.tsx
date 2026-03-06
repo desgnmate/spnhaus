@@ -65,14 +65,14 @@ export default function Services() {
         const originalText = el.querySelector(".original-text");
         const duplicateText = el.querySelector(".duplicate-text");
         const arrow = el.querySelector(".arrow-icon");
-        
+
         // Update preview image
         if (previewRef.current) {
             const images = previewRef.current.querySelectorAll(".service-preview-img");
-            
+
             // Hide all images first
             gsap.set(images, { zIndex: 0 });
-            
+
             // Show current image
             if (images[index]) {
                 gsap.set(images[index], { zIndex: 1 });
@@ -81,7 +81,7 @@ export default function Services() {
                     duration: 0.2,
                     ease: "power2.out"
                 });
-                
+
                 // Hide others
                 images.forEach((img, i) => {
                     if (i !== index) {
@@ -93,7 +93,7 @@ export default function Services() {
                     }
                 });
             }
-            
+
             gsap.to(previewRef.current, {
                 opacity: 1,
                 scale: 1,
@@ -101,7 +101,7 @@ export default function Services() {
                 ease: "power3.out"
             });
         }
-        
+
         // Change background color instantly
         gsap.to(el, {
             backgroundColor: "#FFFFFF",
@@ -172,7 +172,7 @@ export default function Services() {
 
         if (arrow) {
             gsap.to(arrow, {
-                color: "#FFFFFF", 
+                color: "#FFFFFF",
                 duration: 0,
             });
         }
@@ -202,7 +202,7 @@ export default function Services() {
             onMouseMove={handleMouseMove}
         >
             {/* Floating Image Preview */}
-            <div 
+            <div
                 ref={previewRef}
                 className="absolute top-0 left-0 w-[300px] h-[200px] pointer-events-none z-30 opacity-0 scale-95 hidden md:block"
                 style={{ transform: "translate(-50%, -50%)" }}
@@ -236,12 +236,12 @@ export default function Services() {
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="service-row relative flex justify-between items-center py-6 md:py-7 px-5 border-t border-white/[0.12] transition-colors group cursor-pointer w-full"
+                            className="service-row relative flex justify-between items-center py-6 md:py-7 px-5 border-t border-white/12 transition-colors group cursor-pointer w-full"
                             onMouseEnter={(e) => handleMouseEnter(e, i)}
                             onMouseLeave={handleMouseLeave}
                             style={{ borderBottom: i === services.length - 1 ? "1px solid rgba(255,255,255,0.12)" : undefined }}
                         >
-                            <div 
+                            <div
                                 className="relative overflow-hidden font-druk text-white"
                                 style={{
                                     fontSize: "clamp(16px, 2.5vw, 32px)",

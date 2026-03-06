@@ -126,8 +126,8 @@ export default function Hero() {
                 {/* Left: HOME or SPNHAUS Logo */}
                 <div className="flex items-center h-6">
                     {showLogo ? (
-                        <a 
-                            href="#" 
+                        <a
+                            href="#"
                             onClick={(e) => {
                                 e.preventDefault();
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -164,18 +164,11 @@ export default function Hero() {
             </nav>
 
             {/* Hero Content */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-start items-center px-6 md:px-12 pt-16 md:pt-24">
+            <div className="absolute inset-0 z-10 flex flex-col justify-start items-center pt-16 md:pt-24">
                 {/* Main Title */}
                 <h1
                     ref={titleRef}
-                    className="flex overflow-hidden relative z-10 w-full justify-center font-druk py-2"
-                    style={{
-                        fontSize: "clamp(60px, 18vw, 230px)",
-                        fontWeight: 900,
-                        letterSpacing: "-0.03em",
-                        lineHeight: 1,
-                        color: "#FFFFFF",
-                    }}
+                    className="flex relative z-10 w-full justify-center font-druk py-2 text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] font-black tracking-[-0.03em] leading-none text-white whitespace-nowrap"
                 >
                     {titleLetters.map((letter, i) => (
                         <span key={i} className="hero-letter inline-block transform-gpu">
@@ -185,9 +178,9 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtitles */}
-                <div 
+                <div
                     ref={subtextRef}
-                    className="w-full flex justify-between mt-2 relative z-0"
+                    className="w-full flex justify-between mt-2 px-6 md:px-12 relative z-0"
                 >
                     <span className="text-[10px] md:text-xs tracking-[0.2em] text-white/60 font-medium uppercase">
                         CURATING PLAYLISTS

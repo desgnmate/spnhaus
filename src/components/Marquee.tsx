@@ -4,7 +4,7 @@ export default function Marquee() {
     const items = Array(16).fill("SPNHAUS");
 
     return (
-        <section className="py-6 bg-black border-t border-b border-white/[0.08] overflow-hidden">
+        <section className="py-6 bg-black border-t border-b border-white/8 overflow-hidden">
             <div className="marquee-track flex items-center gap-8 whitespace-nowrap">
                 {items.map((text, i) => (
                     <span key={i} className="flex items-center gap-8">
