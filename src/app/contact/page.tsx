@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 import { useLoading } from "@/context/LoadingContext";
 
 export default function ContactPage() {
@@ -53,11 +54,11 @@ export default function ContactPage() {
                         GET IN TOUCH
                     </h1>
                     
-                    <div className="font-space-grotesk space-y-6 md:space-y-8 text-lg md:text-xl font-light">
+                    <div className="font-sora space-y-6 md:space-y-8 text-lg md:text-xl font-light">
                         <div className="flex flex-col items-center gap-2">
                             <span className="text-white/60 text-sm tracking-widest uppercase">Email Us</span>
-                            <a href="mailto:info@spnhaus.com" className="hover:text-white/80 transition-colors border-b border-white/20 pb-1">
-                                info@spnhaus.com
+                            <a href="mailto:hello@spnhaus.com" className="hover:text-white/80 transition-colors border-b border-white/20 pb-1">
+                                hello@spnhaus.com
                             </a>
                         </div>
 
@@ -65,8 +66,6 @@ export default function ContactPage() {
                             <span className="text-white/60 text-sm tracking-widest uppercase">Follow Us</span>
                             <div className="flex gap-6 mt-2">
                                 <a href="https://www.instagram.com/spnhaus/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">Instagram</a>
-                                <a href="#" className="hover:text-white/80 transition-colors">Twitter</a>
-                                <a href="#" className="hover:text-white/80 transition-colors">LinkedIn</a>
                             </div>
                         </div>
                     </div>
@@ -91,17 +90,26 @@ function ContactNavbar() {
                 </Link>
             </div>
 
-            {/* Right: CONTACT, FOLLOW US, BOOK NOW */}
-            <div className="flex gap-8 md:gap-12 items-center">
+            {/* Mobile Menu */}
+            <MobileMenu />
+
+            {/* Right: ACADEMY, CONTACT, BOOK NOW - Hidden on mobile */}
+            <div className="hidden md:flex gap-6 md:gap-10 items-center">
+                <Link
+                    href="/academy"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
+                >
+                    ACADEMY
+                </Link>
                 <Link
                     href="/contact"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
                 >
                     CONTACT
                 </Link>
                 <Link
                     href="/book"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
                 >
                     BOOK NOW
                 </Link>

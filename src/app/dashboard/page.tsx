@@ -80,9 +80,20 @@ export default function DashboardPage() {
           <span className="text-[10px] tracking-[0.4em] text-white/50 uppercase">
             Admin Dashboard
           </span>
-          <h1 className="font-druk text-4xl md:text-5xl uppercase tracking-wide">
-            SPNHAUS Performance
-          </h1>
+          <div className="flex items-center justify-between">
+            <h1 className="font-druk text-4xl md:text-5xl uppercase tracking-wide">
+              SPNHAUS Performance
+            </h1>
+            <a
+              href="/design-board"
+              className="flex items-center gap-2 px-4 py-2 bg-[#F4C542] text-black rounded-full hover:bg-[#E0B530] transition-colors font-medium text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Design Board
+            </a>
+          </div>
           <p className="text-sm md:text-base text-white/70 max-w-2xl">
             Monitor traffic, leads, and SEO visibility in one place. Data below is seeded for layout and can be wired to analytics providers.
           </p>

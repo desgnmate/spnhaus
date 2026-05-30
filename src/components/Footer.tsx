@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,11 +8,11 @@ export default function Footer() {
     const containerRef = useRef<HTMLElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
-            // Parallax effect for the text or other animations can go here
+            // Parallax effect for the image
             if (textRef.current) {
                 gsap.from(textRef.current, {
                     y: 50,
@@ -49,31 +49,44 @@ export default function Footer() {
             {/* Content Container */}
             <div className="relative z-10 w-full h-full flex flex-col justify-end pb-12 px-6 md:px-12">
 
-                {/* Large SPNHAUS Text */}
+                {/* Large SPNHAUS Image */}
                 <div
                     ref={textRef}
-                    className="w-full flex justify-center items-end"
+                    className="w-full flex justify-center items-end mb-8"
                 >
-                    <h1
-                        className="font-druk font-black text-white leading-none tracking-tight w-full text-center text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] mb-[-0.05em]"
-                    >
-                        SPNHAUS
-                    </h1>
+                    <img
+                        src="/SPNHAUS.png"
+                        alt="SPNHAUS"
+                        className="w-full h-auto"
+                    />
                 </div>
 
                 {/* Bottom Bar Info */}
-                <div className="w-full flex flex-col md:flex-row justify-between items-end md:items-center mt-4 md:mt-0 gap-8">
-                    {/* Mission Text */}
-                    <p className="max-w-md text-sm md:text-base font-medium text-gray-300 leading-snug">
-                        SPNHAUS’ mission is to merge music, art, culture, and storytelling into one connected ecosystem.
-                    </p>
-
+                <div className="w-full flex flex-col-reverse md:flex-row justify-between items-center gap-8">
+                    {/* Credit */}
                     <a
-                        href="https://www.instagram.com/spnhaus/"
-                        className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
+                        href="https://www.desgnmate.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-base md:text-lg font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-wide text-center"
                     >
-                        FOLLOW US ON INSTAGRAM
+                        Designed and Developed by www.desgnmate.com
                     </a>
+
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                        <a
+                            href="mailto:hello@spnhaus.com"
+                            className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
+                        >
+                            hello@spnhaus.com
+                        </a>
+                        <a
+                            href="https://www.instagram.com/spnhaus/"
+                            className="text-base md:text-lg font-medium text-white hover:text-gray-300 transition-colors uppercase tracking-wide"
+                        >
+                            FOLLOW US ON INSTAGRAM
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

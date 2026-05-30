@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -36,7 +36,7 @@ export default function AboutStrip() {
     const sectionRef = useRef<HTMLElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
@@ -106,7 +106,6 @@ export default function AboutStrip() {
                                 className="strip-img w-full h-full object-cover"
                                 style={{
                                     filter: "grayscale(100%) brightness(0.7)",
-                                    transform: member.name === "5600K" ? "scale(1.2)" : undefined
                                 }}
                                 loading="lazy"
                             />
@@ -121,9 +120,9 @@ export default function AboutStrip() {
                 className="absolute inset-0 flex items-start justify-center pointer-events-none mix-blend-exclusion z-20 pt-[10vh]"
             >
                 <span
-                    className="whitespace-nowrap font-druk text-white text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] leading-none uppercase tracking-[0.02em]"
+                    className="whitespace-nowrap font-druk text-white text-[10vw] leading-none uppercase tracking-[0.02em]"
                 >
-                    ABOUT US
+                    MEET THE DJs
                 </span>
             </div>
         </section>

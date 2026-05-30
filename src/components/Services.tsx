@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,7 +36,7 @@ export default function Services() {
     const sectionRef = useRef<HTMLElement>(null);
     const previewRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
@@ -62,9 +62,8 @@ export default function Services() {
 
     const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
         const el = e.currentTarget;
-        const originalText = el.querySelector(".original-text");
-        const duplicateText = el.querySelector(".duplicate-text");
         const arrow = el.querySelector(".arrow-icon");
+        const title = el.querySelector(".service-title");
 
         // Update preview image
         if (previewRef.current) {
@@ -102,41 +101,33 @@ export default function Services() {
             });
         }
 
-        // Change background color instantly
+        // Change background color
         gsap.to(el, {
             backgroundColor: "#FFFFFF",
-            duration: 0,
+            duration: 0.3,
+            ease: "power2.out"
         });
 
-        // Text Slide Up Animation
-        if (originalText && duplicateText) {
-            gsap.to(originalText, {
-                y: "-100%",
-                duration: 0.4,
-                ease: "power3.out",
-                color: "#000000"
-            });
-            gsap.to(duplicateText, {
-                y: "0%",
-                duration: 0.4,
-                ease: "power3.out",
-                color: "#000000"
+        // Change text color to black
+        if (title) {
+            gsap.to(title, {
+                color: "#000000",
+                duration: 0.3,
             });
         }
 
         if (arrow) {
             gsap.to(arrow, {
                 color: "#000000",
-                duration: 0,
+                duration: 0.3,
             });
         }
     };
 
     const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
         const el = e.currentTarget;
-        const originalText = el.querySelector(".original-text");
-        const duplicateText = el.querySelector(".duplicate-text");
         const arrow = el.querySelector(".arrow-icon");
+        const title = el.querySelector(".service-title");
 
         // Hide preview
         if (previewRef.current) {
@@ -148,32 +139,25 @@ export default function Services() {
             });
         }
 
-        // Reset background color instantly
+        // Reset background color
         gsap.to(el, {
             backgroundColor: "transparent",
-            duration: 0,
+            duration: 0.3,
+            ease: "power2.out"
         });
 
-        // Reset Text Animation
-        if (originalText && duplicateText) {
-            gsap.to(originalText, {
-                y: "0%",
-                duration: 0.4,
-                ease: "power3.out",
-                color: "#FFFFFF"
-            });
-            gsap.to(duplicateText, {
-                y: "100%",
-                duration: 0.4,
-                ease: "power3.out",
-                color: "#FFFFFF"
+        // Reset text color to white
+        if (title) {
+            gsap.to(title, {
+                color: "#FFFFFF",
+                duration: 0.3,
             });
         }
 
         if (arrow) {
             gsap.to(arrow, {
                 color: "#FFFFFF",
-                duration: 0,
+                duration: 0.3,
             });
         }
     };
@@ -205,7 +189,7 @@ export default function Services() {
             <div
                 ref={previewRef}
                 className="absolute top-0 left-0 w-[300px] h-[200px] pointer-events-none z-30 opacity-0 scale-95 hidden md:block"
-                style={{ transform: "translate(-50%, -50%)" }}
+                style={{ transform: "translate(-50%, -50%)", opacity: 0 }}
             >
                 <div className="w-full h-full overflow-hidden relative bg-gray-900">
                     {services.map((service, i) => (
@@ -242,32 +226,15 @@ export default function Services() {
                             style={{ borderBottom: i === services.length - 1 ? "1px solid rgba(255,255,255,0.12)" : undefined }}
                         >
                             <div
-                                className="relative overflow-hidden font-druk text-white"
+                                className="service-title relative font-druk text-white"
                                 style={{
                                     fontSize: "clamp(16px, 2.5vw, 32px)",
-                                    height: "1.3em",
-                                    lineHeight: 1.2
+                                    lineHeight: 1.2,
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.02em",
                                 }}
                             >
-                                <span
-                                    className="original-text block"
-                                    style={{
-                                        textTransform: "uppercase",
-                                        letterSpacing: "0.02em",
-                                    }}
-                                >
-                                    {service.title}
-                                </span>
-                                <span
-                                    className="duplicate-text block absolute top-0 left-0"
-                                    style={{
-                                        textTransform: "uppercase",
-                                        letterSpacing: "0.02em",
-                                        transform: "translateY(100%)"
-                                    }}
-                                >
-                                    {service.title}
-                                </span>
+                                {service.title}
                             </div>
                             <span className="arrow-icon text-lg md:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
                                 →

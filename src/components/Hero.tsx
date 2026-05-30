@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
+import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -10,22 +12,12 @@ export default function Hero() {
     const navRef = useRef<HTMLElement>(null);
     const subtextRef = useRef<HTMLDivElement>(null);
     const bgRef = useRef<HTMLDivElement>(null);
-    const [showLogo, setShowLogo] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             // Register ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
 
-            // Toggle logo on scroll
-            ScrollTrigger.create({
-                trigger: sectionRef.current,
-                start: "bottom top", // Trigger when bottom of hero hits top of viewport
-                endTrigger: "html",
-                end: "bottom bottom",
-                onEnter: () => setShowLogo(true),
-                onLeaveBack: () => setShowLogo(false),
-            });
             // Background scale-in
             gsap.from(bgRef.current, {
                 scale: 1.15,
@@ -121,11 +113,10 @@ export default function Hero() {
             {/* Navigation */}
             <nav
                 ref={navRef}
-                className="fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-6 md:px-12 pt-8 w-full mix-blend-difference"
+                className="fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-6 md:px-12 pt-8 w-full"
             >
-                {/* Left: HOME or SPNHAUS Logo */}
-                <div className="flex items-center h-6">
-                    {showLogo ? (
+                {/* Left: SPNHAUS Logo */}
+                <div className="flex items-center h-6 mix-blend-difference">
                         <a
                             href="#"
                             onClick={(e) => {
@@ -136,59 +127,63 @@ export default function Hero() {
                         >
                             SPNHAUS
                         </a>
-                    ) : (
-                        <a
-                            href="#"
-                            className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors"
-                        >
-                            HOME
-                        </a>
-                    )}
                 </div>
 
-                {/* Right: CONTACT, FOLLOW US, BOOK NOW */}
-                <div className="flex gap-6 md:gap-10">
-                    <a
+                {/* Mobile Menu */}
+                <MobileMenu />
+
+                {/* Right: ACADEMY, CONTACT, BOOK NOW - Hidden on mobile */}
+                <div className="hidden md:flex gap-6 md:gap-10 mix-blend-difference">
+                    <Link
+                        href="/academy"
+                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors uppercase font-sora"
+                    >
+                        ACADEMY
+                    </Link>
+                    <Link
                         href="/contact"
-                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors"
+                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors uppercase font-sora"
                     >
                         CONTACT
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="/book"
-                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors"
+                        className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors uppercase font-sora"
                     >
                         BOOK NOW
-                    </a>
+                    </Link>
                 </div>
             </nav>
 
             {/* Hero Content */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-start items-center pt-16 md:pt-24">
-                {/* Main Title */}
-                <h1
+            <div className="absolute inset-0 z-10 flex flex-col justify-center md:justify-start items-center pt-16 md:pt-24">
+                {/* Main Title Image */}
+                <div
                     ref={titleRef}
-                    className="flex relative z-10 w-full justify-center font-druk py-2 text-[42px] md:text-[86px] lg:text-[110px] xl:text-[170px] 2xl:text-[230px] font-black tracking-[-0.03em] leading-none text-white whitespace-nowrap"
+                    className="hero-title relative z-10 w-full px-4 md:px-8"
                 >
-                    {titleLetters.map((letter, i) => (
-                        <span key={i} className="hero-letter inline-block transform-gpu">
-                            {letter}
-                        </span>
-                    ))}
-                </h1>
+                    <img
+                        src="/SPNHAUS.png"
+                        alt="SPNHAUS"
+                        className="w-full h-auto"
+                    />
+                </div>
 
                 {/* Subtitles */}
-                <div
-                    ref={subtextRef}
-                    className="w-full flex justify-between mt-2 px-6 md:px-12 relative z-0"
-                >
-                    <span className="text-[10px] md:text-xs tracking-[0.2em] text-white/60 font-medium uppercase">
-                        CURATING PLAYLISTS
-                    </span>
-                    <span className="text-[10px] md:text-xs tracking-[0.2em] text-white/60 font-medium uppercase text-right">
-                        ANYWHERE AND EVERYWHERE.
-                    </span>
-                </div>
+                    <div
+                        ref={subtextRef}
+                        className="w-full flex justify-center md:justify-between mt-2 px-4 md:px-8 relative z-0"
+                    >
+                        <span className="md:hidden text-[10px] tracking-[0.2em] text-white/60 font-medium uppercase text-center">
+                            CURATING PLAYLISTS ANYWHERE AND EVERYWHERE.
+                        </span>
+                        <span className="hidden md:inline text-[10px] md:text-xs tracking-[0.2em] text-white/60 font-medium uppercase">
+                            CURATING PLAYLISTS
+                        </span>
+                        <span className="hidden md:inline text-[10px] md:text-xs tracking-[0.2em] text-white/60 font-medium uppercase text-right">
+                            ANYWHERE AND EVERYWHERE.
+                        </span>
+                    </div>
             </div>
         </section>
     );

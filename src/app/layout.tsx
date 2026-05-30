@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Sora } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
@@ -42,10 +37,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${druk.variable} ${drukWideBold.variable} font-sans antialiased bg-black text-white`}>
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+      <body className={`${sora.variable} ${druk.variable} ${drukWideBold.variable} font-sans antialiased bg-black text-white`}>
+        <ConvexClientProvider>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </ConvexClientProvider>
       </body>
     </html>
   );

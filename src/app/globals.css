@@ -2,7 +2,7 @@
 
 @theme {
   --font-druk: var(--font-druk);
-  --font-space-grotesk: var(--font-space-grotesk);
+  --font-sora: var(--font-sora);
 }
 
 /* ================================================
@@ -197,4 +197,15 @@ body::after {
 
 .img-zoom:hover {
   transform: scale(1.05);
+}
+
+/* ---------- Hero Title ---------- */
+.hero-title {
+  font-size: min(12vw, 160px);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: min(12vw, 240px);
+  }
 }

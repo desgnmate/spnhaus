@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import MobileMenu from "@/components/MobileMenu";
 import BookNow from "@/components/BookNow";
 
 export default function BookPage() {
@@ -18,28 +20,37 @@ function BookNavbar() {
         >
             {/* Left: SPNHAUS Logo */}
             <div className="flex items-center">
-                <a 
+                <Link 
                     href="/" 
                     className="font-druk italic text-xl md:text-2xl tracking-normal text-white hover:opacity-80 transition-opacity"
                 >
                     SPNHAUS
-                </a>
+                </Link>
             </div>
 
-            {/* Right: CONTACT, FOLLOW US, BOOK NOW */}
-            <div className="flex gap-8 md:gap-12 items-center">
-                <a
+            {/* Mobile Menu */}
+            <MobileMenu />
+
+            {/* Right: ACADEMY, CONTACT, BOOK NOW - Hidden on mobile */}
+            <div className="hidden md:flex gap-6 md:gap-10 items-center">
+                <Link
+                    href="/academy"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
+                >
+                    ACADEMY
+                </Link>
+                <Link
                     href="/contact"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
                 >
                     CONTACT
-                </a>
-                <a
+                </Link>
+                <Link
                     href="/book"
-                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-space-grotesk"
+                    className="text-[10px] md:text-xs tracking-[0.2em] font-medium text-white hover:text-white/70 transition-colors uppercase font-sora"
                 >
                     BOOK NOW
-                </a>
+                </Link>
             </div>
         </nav>
     );

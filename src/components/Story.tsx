@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -62,7 +62,7 @@ export default function Story() {
     const paragraph2Ref = useRef<HTMLParagraphElement>(null);
     const imagesRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
@@ -197,17 +197,17 @@ export default function Story() {
                     })}
                 </div>
 
-                <div className="max-w-4xl mx-auto w-full flex flex-col items-center justify-center text-center space-y-12 md:space-y-16 relative z-10 font-space-grotesk">
+                <div className="max-w-4xl mx-auto w-full flex flex-col items-center justify-center text-center space-y-12 md:space-y-16 relative z-10 font-sora">
                     
-                    {/* Top: Outlined Text "OUR STORY" */}
+                    {/* Title: "OUR STORY" */}
                     <div>
                         <span
                             ref={outlineRef}
-                            className="text-stroke-thick block"
+                            className="block text-white"
                             style={{
                                 fontFamily: "var(--font-druk-wide-bold), sans-serif",
                                 fontWeight: 700,
-                                fontSize: "clamp(60px, 12vw, 80px)",
+                                fontSize: "clamp(20px, 2.5vw, 28px)",
                                 textTransform: "uppercase",
                                 letterSpacing: "-0.02em",
                                 lineHeight: 0.9,
@@ -218,9 +218,9 @@ export default function Story() {
                     </div>
 
                     {/* Middle: First Paragraph */}
-                    <p 
+                    <p
                         ref={paragraph1Ref}
-                        className="text-lg md:text-xl lg:text-2xl text-white/80 font-light leading-relaxed max-w-2xl mx-auto text-center font-space-grotesk"
+                        className="text-base md:text-lg text-white/80 font-light leading-relaxed max-w-2xl mx-auto text-center font-sora"
                     >
                         {paragraph1Text.split(" ").map((word, index, all) => (
                             <span
@@ -234,9 +234,9 @@ export default function Story() {
                     </p>
 
                     {/* Bottom Paragraph */}
-                    <p 
-                        ref={paragraph2Ref} 
-                        className="text-lg md:text-xl lg:text-2xl text-white/80 font-light leading-relaxed font-space-grotesk max-w-2xl mx-auto text-center w-full"
+                    <p
+                        ref={paragraph2Ref}
+                        className="text-base md:text-lg text-white/80 font-light leading-relaxed font-sora max-w-2xl mx-auto text-center w-full"
                     >
                         {paragraph2TextStart.split(" ").map((word, index, all) => (
                             <span

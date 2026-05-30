@@ -1,47 +1,44 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
-const fonts = [
-    "var(--font-druk)", // Druk Wide Italic
-    "Mayonice",
-    "Lucidity",
-    "DistortionDosAnalogue",
-    "Stab",
-    "SisterSpray"
+const logos = [
+    "/loading/SPNHAUS.png",
+    "/loading/SPNHAUS-1.png",
+    "/loading/SPNHAUS-2.png",
+    "/loading/SPNHAUS-3.png",
+    "/loading/SPNHAUS-4.png",
+    "/loading/SPNHAUS-5.png",
 ];
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
-    const [currentFontIndex, setCurrentFontIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
-    const textRef = useRef<HTMLHeadingElement>(null);
-    const currentFont = fonts[currentFontIndex];
-    const fontSizeClass = currentFont === "SisterSpray"
-        ? "text-4xl md:text-6xl lg:text-7xl"
-        : "text-6xl md:text-8xl lg:text-9xl";
+    const imageRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Font cycling animation
-        const fontInterval = setInterval(() => {
-            setCurrentFontIndex((prev) => (prev + 1) % fonts.length);
+        // Logo cycling animation
+        const logoInterval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % logos.length);
         }, 100);
 
         // Timeline for the whole loading sequence
         const tl = gsap.timeline({
             onComplete: () => {
-                clearInterval(fontInterval);
+                clearInterval(logoInterval);
                 if (onComplete) onComplete();
             }
         });
 
-        // Stay visible, then fade text out before screen exits
+        // Stay visible, then fade image out before screen exits
         tl.to(containerRef.current, {
             opacity: 1,
-            duration: 4.2,
+            duration: 1,
         });
 
-        tl.to(textRef.current, {
+        tl.to(imageRef.current, {
             opacity: 0,
             duration: 0.3,
             ease: "power2.out"
@@ -55,7 +52,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         });
 
         return () => {
-            clearInterval(fontInterval);
+            clearInterval(logoInterval);
             tl.kill();
         };
     }, [onComplete]);
@@ -70,17 +67,20 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
                 style={{ backgroundImage: "url(/Texturelabs_Grunge_226M.jpg)" }}
             />
 
-            {/* Centered Text */}
-            <h1 
-                ref={textRef}
-                className={`text-white uppercase tracking-wider text-center relative z-10 ${fontSizeClass}`}
-                style={{ 
-                    fontFamily: currentFont,
-                    transition: "font-family 0s"
-                }}
+            {/* Centered Logo */}
+            <div 
+                ref={imageRef}
+                className="relative z-10 w-[60vw] md:w-[40vw] lg:w-[30vw] h-auto"
             >
-                SPNHAUS
-            </h1>
+                <Image
+                    src={logos[currentIndex]}
+                    alt="SPNHAUS"
+                    width={800}
+                    height={200}
+                    priority
+                    className="w-full h-auto"
+                />
+            </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,7 +8,7 @@ export default function Intro() {
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
@@ -43,7 +43,7 @@ export default function Intro() {
         return () => ctx.revert();
     }, []);
 
-    const content = "SPNHAUS is a DJ collective that brings music to spaces with intention. We throw curated events in unique spots — from art galleries to arcades — we're always focused on good sound, good energy, and good people.";
+    const content = "SPNHAUS is a DJ collective that brings music to spaces with intention. We throw curated events in unique spots from art galleries to arcades, we're always focused on good sound, good energy, and good people.";
 
     // Split text but keep SPNHAUS separate if needed, or just split by space
     const words = content.split(" ");
@@ -56,7 +56,7 @@ export default function Intro() {
             <div className="max-w-4xl mx-auto text-center">
                 <p
                     ref={textRef}
-                    className="text-lg md:text-2xl lg:text-3xl font-bold leading-relaxed text-white font-space-grotesk"
+                    className="text-lg md:text-2xl lg:text-3xl font-bold leading-relaxed text-white font-sora"
                 >
                     {words.map((word, i) => {
                         const isBrandName = word === "SPNHAUS";
