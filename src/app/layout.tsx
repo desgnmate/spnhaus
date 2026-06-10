@@ -3,7 +3,6 @@ import { Sora } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
-import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -38,11 +37,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sora.variable} ${druk.variable} ${drukWideBold.variable} font-sans antialiased bg-black text-white`}>
-        <ConvexClientProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </ConvexClientProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
