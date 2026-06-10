@@ -13,7 +13,7 @@ export default function BookNow() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img 
-                    src="/images/booknow-bg.jpg" 
+                    src="/images/booknow-bg.webp" 
                     alt="Crowd background" 
                     className="w-full h-full object-cover opacity-40 grayscale"
                 />

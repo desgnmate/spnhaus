@@ -8,19 +8,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const events = [
     {
         title: "AKIRA'S ARCADE",
-        image: "/images/events/akiras-arcade.jpg",
+        image: "/images/events/akiras-arcade.webp",
     },
     {
         title: "HOWLER",
-        image: "/images/events/howler.jpg",
+        image: "/images/events/howler.webp",
     },
     {
         title: "AKIRA'S ARCADE",
-        image: "/images/events/akiras-arcade.jpg",
+        image: "/images/events/akiras-arcade.webp",
     },
     {
         title: "HOWLER",
-        image: "/images/events/howler.jpg",
+        image: "/images/events/howler.webp",
     },
 ];
 

@@ -23,9 +23,12 @@ export default function Intro() {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",      // Start when the top of section hits top of viewport
-                        end: "+=150%",         // Pin duration (adjust for scroll length)
+                        end: () => `+=${window.innerHeight * (window.innerWidth < 768 ? 0.6 : 1.5)}`, // Shorter pin on mobile
                         pin: true,             // Pin the section
-                        scrub: 1,              // Smooth scrubbing
+                        scrub: window.innerWidth < 768 ? false : 1, // Disable scrub on mobile for faster scroll
+                        fastScrollEnd: true,   // Snap to end on fast scrolls
+                        pinSpacing: window.innerWidth < 768 ? false : true, // No extra spacing on mobile
+                        anticipatePin: 1,
                     }
                 });
 
@@ -33,8 +36,8 @@ export default function Intro() {
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
-                    stagger: 0.1,
-                    duration: 1,
+                    stagger: window.innerWidth < 768 ? 0.04 : 0.1, // Faster stagger on mobile
+                    duration: window.innerWidth < 768 ? 0.5 : 1,
                     ease: "power2.out"
                 });
             }

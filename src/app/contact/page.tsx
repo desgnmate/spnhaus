@@ -24,7 +24,7 @@ export default function ContactPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src="/images/contact-bg.jpg" 
+                        src="/images/contact-bg.webp" 
                         alt="Contact Background" 
                         className="w-full h-full object-cover opacity-60"
                     />

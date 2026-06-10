@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import gsap from "gsap";
@@ -12,6 +12,7 @@ export default function Hero() {
     const navRef = useRef<HTMLElement>(null);
     const subtextRef = useRef<HTMLDivElement>(null);
     const bgRef = useRef<HTMLDivElement>(null);
+    const [showLogo, setShowLogo] = useState(false);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -65,13 +66,15 @@ export default function Hero() {
             // Parallax on scroll
             gsap.registerPlugin(ScrollTrigger);
 
+            const isMobile = window.innerWidth < 768;
+
             gsap.to(bgRef.current, {
                 y: 150,
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
                     end: "bottom top",
-                    scrub: true,
+                    scrub: isMobile ? false : true, // Disable scrub on mobile
                 },
             });
 
@@ -82,7 +85,7 @@ export default function Hero() {
                     trigger: sectionRef.current,
                     start: "top top",
                     end: "60% top",
-                    scrub: true,
+                    scrub: isMobile ? false : true, // Disable scrub on mobile
                 },
             });
         }, sectionRef);
@@ -100,7 +103,7 @@ export default function Hero() {
             {/* Background Image */}
             <div ref={bgRef} className="absolute inset-0 z-0">
                 <img
-                    src="/images/hero-bg.jpg"
+                    src="/images/hero-bg.webp"
                     onError={(e) => {
                         e.currentTarget.src = "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80";
                     }}
@@ -113,27 +116,31 @@ export default function Hero() {
             {/* Navigation */}
             <nav
                 ref={navRef}
-                className="fixed top-0 left-0 right-0 z-50 flex justify-between items-start px-6 md:px-12 pt-8 w-full"
+                className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 pt-5 md:pt-8 w-full mix-blend-difference"
             >
-                {/* Left: SPNHAUS Logo */}
-                <div className="flex items-center h-6 mix-blend-difference">
-                        <a
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }}
-                            className="font-druk italic text-xl md:text-2xl tracking-normal text-white hover:opacity-80 transition-opacity"
-                        >
-                            SPNHAUS
-                        </a>
+                {/* Left: HOME or SPNHAUS Logo */}
+                <div className="flex items-center">
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="block h-4 md:h-5 hover:opacity-80 transition-opacity"
+                    >
+                        <img
+                            src="/SPNHAUS.webp"
+                            alt="SPNHAUS"
+                            className="h-full w-auto"
+                        />
+                    </a>
                 </div>
 
                 {/* Mobile Menu */}
                 <MobileMenu />
 
                 {/* Right: ACADEMY, CONTACT, BOOK NOW - Hidden on mobile */}
-                <div className="hidden md:flex gap-6 md:gap-10 mix-blend-difference">
+                <div className="hidden md:flex gap-6 md:gap-10">
                     <Link
                         href="/academy"
                         className="link-hover text-[10px] md:text-xs tracking-[0.2em] font-medium text-white/80 hover:text-white transition-colors uppercase font-sora"
@@ -163,7 +170,7 @@ export default function Hero() {
                     className="hero-title relative z-10 w-full px-4 md:px-8"
                 >
                     <img
-                        src="/SPNHAUS.png"
+                        src="/SPNHAUS.webp"
                         alt="SPNHAUS"
                         className="w-full h-auto"
                     />

@@ -66,57 +66,65 @@ export default function Story() {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
+            const isMobile = window.innerWidth < 768;
+
             // Text fade-in function
             const animateText = (element: HTMLElement) => {
                 const spans = element.querySelectorAll("span[data-word]");
                 return gsap.to(spans, {
                     opacity: 1,
                     filter: "blur(0px)",
-                    duration: 0.8,
-                    stagger: 0.02,
+                    duration: isMobile ? 0.5 : 0.8,
+                    stagger: isMobile ? 0.01 : 0.02,
                     ease: "power2.out"
                 });
             };
 
-            // Background Image Animation Loop (Independent of Scroll)
-            const bgImages = imagesRef.current?.querySelectorAll(".story-bg-container");
-            if (bgImages) {
-                bgImages.forEach((container) => {
-                    const randomDuration = 18 + Math.random() * 10; 
-                    const randomDelay = -(Math.random() * randomDuration); // Negative delay to start mid-animation
-                    
-                    gsap.fromTo(container, 
-                        { 
-                            y: "10vh", // Start just below view
-                            opacity: 0,
-                            scale: 0.8, 
-                        },
-                        {
-                            y: "-120vh", // Move all the way up past view
-                            opacity: 1, 
-                            scale: 1,
-                            duration: randomDuration,
-                            repeat: -1,
-                            ease: "none",
-                            delay: randomDelay,
-                            yoyo: false,
-                            keyframes: [
-                                { opacity: 0, duration: 0 },
-                                { opacity: 1, duration: randomDuration * 0.1 }, // Fade in quicker
-                                { opacity: 1, duration: randomDuration * 0.8 }, // Stay visible longer
-                                { opacity: 0, duration: randomDuration * 0.1 }  // Fade out at top
-                            ]
-                        }
-                    );
-                });
+            // Background Image Animation Loop (Independent of Scroll) - Skip on mobile
+            if (!isMobile) {
+                const bgImages = imagesRef.current?.querySelectorAll(".story-bg-container");
+                if (bgImages) {
+                    bgImages.forEach((container) => {
+                        const randomDuration = 18 + Math.random() * 10; 
+                        const randomDelay = -(Math.random() * randomDuration); // Negative delay to start mid-animation
+                        
+                        gsap.fromTo(container, 
+                            { 
+                                y: "10vh", // Start just below view
+                                opacity: 0,
+                                scale: 0.8, 
+                            },
+                            {
+                                y: "-120vh", // Move all the way up past view
+                                opacity: 1, 
+                                scale: 1,
+                                duration: randomDuration,
+                                repeat: -1,
+                                ease: "none",
+                                delay: randomDelay,
+                                yoyo: false,
+                                keyframes: [
+                                    { opacity: 0, duration: 0 },
+                                    { opacity: 1, duration: randomDuration * 0.1 }, // Fade in quicker
+                                    { opacity: 1, duration: randomDuration * 0.8 }, // Stay visible longer
+                                    { opacity: 0, duration: randomDuration * 0.1 }  // Fade out at top
+                                ]
+                            }
+                        );
+                    });
+                }
             }
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=150%", // Increased pinning to ensure enough time for full animation if user scrolls fast
+                    end: () => `+=${window.innerHeight * (isMobile ? 0.5 : 1.5)}`, // Much shorter pin on mobile
                     pin: true,
+                    scrub: isMobile ? false : true, // Disable scrub on mobile for instant scroll-through
+                    fastScrollEnd: true,
+                    pinSpacing: isMobile ? false : true, // No extra spacing on mobile
+                    anticipatePin: 1,
                     toggleActions: "play none none reverse",
                 }
             });

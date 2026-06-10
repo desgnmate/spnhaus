@@ -8,27 +8,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const services = [
     {
         title: "BUSINESS LAUNCHES",
-        image: "/images/services/Business Launches.jpeg"
+        image: "/images/services/Business Launches.webp"
     },
     {
         title: "PRIVATE EVENTS",
-        image: "/images/services/Private Events.jpg"
+        image: "/images/services/Private Events.webp"
     },
     {
         title: "CORPORATE EVENTS",
-        image: "/images/services/Corporate Events.jpg"
+        image: "/images/services/Corporate Events.webp"
     },
     {
         title: "WEDDINGS",
-        image: "/images/services/Weddings.jpg"
+        image: "/images/services/Weddings.webp"
     },
     {
         title: "DAY PARTIES & BRUNCH PARTIES",
-        image: "/images/services/Day Parties & Brunch Parties.jpg"
+        image: "/images/services/Day Parties & Brunch Parties.webp"
     },
     {
         title: "COMMUNITY EVENTS / FUNDRAISERS",
-        image: "/images/services/Community Events:Fundraisers.jpg"
+        image: "/images/services/Community Events:Fundraisers.webp"
     },
 ];
 

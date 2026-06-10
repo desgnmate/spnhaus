@@ -39,7 +39,7 @@ export default function Footer() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0 grayscale">
                 <img
-                    src="/images/footer-bg.jpg"
+                    src="/images/footer-bg.webp"
                     alt="Crowd background"
                     className="w-full h-full object-cover opacity-60"
                 />
@@ -55,7 +55,7 @@ export default function Footer() {
                     className="w-full flex justify-center items-end mb-8"
                 >
                     <img
-                        src="/SPNHAUS.png"
+                        src="/SPNHAUS.webp"
                         alt="SPNHAUS"
                         className="w-full h-auto"
                     />

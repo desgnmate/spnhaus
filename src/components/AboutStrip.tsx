@@ -6,27 +6,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const team = [
     {
-        src: "/images/about/Lec.jpg",
-        name: "SOME GUY NAMED LEC",
+        src: "/images/about/Lec.webp",
+        name: "LUCKYBOY",
         role: "FOUNDER / DJ"
     },
     {
-        src: "/images/about/Tole.jpg",
+        src: "/images/about/Tole.webp",
         name: "TOLE",
         role: "DJ"
     },
     {
-        src: "/images/about/Sochu.jpg",
+        src: "/images/about/Sochu.webp",
         name: "SOCHU",
         role: "DJ"
     },
     {
-        src: "/images/about/5600k.jpg",
+        src: "/images/about/5600k.webp",
         name: "5600K",
         role: "DJ"
     },
     {
-        src: "/images/about/Jkongerz.jpg",
+        src: "/images/about/Jkongerz.webp",
         name: "JKONGERZ",
         role: "DJ"
     },
@@ -40,8 +40,10 @@ export default function AboutStrip() {
         gsap.registerPlugin(ScrollTrigger);
 
         const ctx = gsap.context(() => {
-            // Horizontal text shift on scroll
-            if (textRef.current) {
+            const isMobile = window.innerWidth < 768;
+
+            // Horizontal text shift on scroll - desktop only
+            if (textRef.current && !isMobile) {
                 gsap.fromTo(textRef.current,
                     { x: 0 },
                     {
@@ -56,19 +58,21 @@ export default function AboutStrip() {
                 );
             }
 
-            // Images subtle scale on scroll
-            const imgs = sectionRef.current?.querySelectorAll(".strip-img");
-            imgs?.forEach((img) => {
-                gsap.from(img, {
-                    scale: 1.1,
-                    scrollTrigger: {
-                        trigger: img,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: true,
-                    },
+            // Images subtle scale on scroll - desktop only
+            if (!isMobile) {
+                const imgs = sectionRef.current?.querySelectorAll(".strip-img");
+                imgs?.forEach((img) => {
+                    gsap.from(img, {
+                        scale: 1.1,
+                        scrollTrigger: {
+                            trigger: img,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: true,
+                        },
+                    });
                 });
-            });
+            }
         }, sectionRef);
 
         return () => ctx.revert();

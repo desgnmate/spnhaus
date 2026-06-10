@@ -10,52 +10,7 @@
    ================================================ */
 
 /* ---------- Custom Fonts ---------- */
-@font-face {
-  font-family: 'Monument';
-  src: local('Impact');
-  font-weight: 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mayonice';
-  src: url('/fonts/Mayonice.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lucidity';
-  src: url('/fonts/Lucidity.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DistortionDosAnalogue';
-  src: url('/fonts/DistortionDosAnalogue.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Stab';
-  src: url('/fonts/Stab.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SisterSpray';
-  src: url('/fonts/SisterSpray.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* All custom fonts are now handled via next/font in layout.tsx */
 
 /* ---------- Custom Properties ---------- */
 :root {

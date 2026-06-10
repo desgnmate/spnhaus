@@ -124,7 +124,7 @@ export default function AcademyPage() {
             <section className="relative h-screen flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/contact-bg.jpg"
+                        src="/images/contact-bg.webp"
                         alt=""
                         className="w-full h-full object-cover opacity-40 grayscale"
                     />

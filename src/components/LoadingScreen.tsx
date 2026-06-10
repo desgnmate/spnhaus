@@ -5,12 +5,12 @@ import Image from "next/image";
 import gsap from "gsap";
 
 const logos = [
-    "/loading/SPNHAUS.png",
-    "/loading/SPNHAUS-1.png",
-    "/loading/SPNHAUS-2.png",
-    "/loading/SPNHAUS-3.png",
-    "/loading/SPNHAUS-4.png",
-    "/loading/SPNHAUS-5.png",
+    "/loading/SPNHAUS.webp",
+    "/loading/SPNHAUS-1.webp",
+    "/loading/SPNHAUS-2.webp",
+    "/loading/SPNHAUS-3.webp",
+    "/loading/SPNHAUS-4.webp",
+    "/loading/SPNHAUS-5.webp",
 ];
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -64,7 +64,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         >
             <div 
                 className="absolute inset-0 opacity-4 pointer-events-none bg-center bg-cover"
-                style={{ backgroundImage: "url(/Texturelabs_Grunge_226M.jpg)" }}
+                style={{ backgroundImage: "url(/Texturelabs_Grunge_226M.webp)" }}
             />
 
             {/* Centered Logo */}
