@@ -89,6 +89,9 @@ export const metadata: Metadata = {
             "max-video-preview": -1,
         },
     },
+    verification: {
+        google: "eS_zms9NH_9zbs3KIbktjdm4eACxULvGuZ2skT8mSlE",
+    },
     category: "Entertainment",
     classification: "Music & Entertainment",
     other: {
