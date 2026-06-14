@@ -81,7 +81,7 @@ export default function AboutStrip() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-black w-full overflow-hidden h-screen"
+            className="relative bg-black w-full overflow-hidden h-screen pt-16 md:pt-24"
         >
             {/* Image strip */}
             <div className="flex gap-0 w-full h-full">
