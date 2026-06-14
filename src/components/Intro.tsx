@@ -23,9 +23,9 @@ export default function Intro() {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",      // Start when the top of section hits top of viewport
-                        end: () => `+=${window.innerHeight * 0.3}`,
+                        end: () => `+=${window.innerHeight * 1.0}`,
                         pin: true,
-                        scrub: false,
+                        scrub: true,
                         fastScrollEnd: true,
                         pinSpacing: false,
                         anticipatePin: 1,
@@ -36,8 +36,8 @@ export default function Intro() {
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
-                    stagger: window.innerWidth < 768 ? 0.04 : 0.1, // Faster stagger on mobile
-                    duration: window.innerWidth < 768 ? 0.5 : 1,
+                    stagger: 0.06,
+                    duration: 0.6,
                     ease: "power2.out"
                 });
             }
