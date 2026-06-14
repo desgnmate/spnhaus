@@ -66,6 +66,15 @@ export default function Hero() {
             // Parallax on scroll
             gsap.registerPlugin(ScrollTrigger);
 
+            // Logo visibility based on scroll
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                start: "bottom top",
+                end: "bottom top",
+                onEnter: () => setShowLogo(true),
+                onLeaveBack: () => setShowLogo(false),
+            });
+
             const isMobile = window.innerWidth < 768;
 
             gsap.to(bgRef.current, {
@@ -119,7 +128,7 @@ export default function Hero() {
                 className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-12 pt-5 md:pt-8 w-full mix-blend-difference"
             >
                 {/* Left: HOME or SPNHAUS Logo */}
-                <div className="flex items-center">
+                <div className={`flex items-center transition-opacity duration-300 ${showLogo ? 'opacity-100' : 'opacity-0'}`}>
                     <a
                         href="#"
                         onClick={(e) => {
