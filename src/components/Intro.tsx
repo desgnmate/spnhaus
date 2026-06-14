@@ -22,12 +22,11 @@ export default function Intro() {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "top top",      // Start when the top of section hits top of viewport
-                        end: () => `+=${window.innerHeight * 1.0}`,
+                        start: "top top",
+                        end: () => `+=${window.innerHeight * 0.6}`,
                         pin: true,
-                        scrub: true,
-                        fastScrollEnd: true,
                         pinSpacing: false,
+                        toggleActions: "play none none reverse",
                         anticipatePin: 1,
                     }
                 });
