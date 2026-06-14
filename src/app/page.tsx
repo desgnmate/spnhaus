@@ -57,7 +57,7 @@ export default function Home() {
                     segments={45}
                 />
             </section>
-            <section className="relative w-full h-screen bg-black py-16 md:py-24">
+            <section className="relative w-full h-screen bg-black py-24 md:py-40">
                 <FlowingMenu
                     items={serviceItems}
                     textColor="#ffffff"
