@@ -57,7 +57,15 @@ export default function Home() {
                     segments={45}
                 />
             </section>
-            <section className="relative w-full h-screen bg-black py-24 md:py-40">
+            <section className="relative w-full h-screen bg-black py-24 md:py-40 flex flex-col justify-center">
+                <div className="px-6 md:px-12 mb-10 md:mb-16">
+                    <h2 className="font-druk text-4xl md:text-6xl uppercase tracking-tight text-white mb-4">
+                        WHAT WE DO
+                    </h2>
+                    <p className="text-white/40 text-sm md:text-base font-light font-sora max-w-xl leading-relaxed">
+                        Curated DJ sets for every space and occasion across Melbourne.
+                    </p>
+                </div>
                 <FlowingMenu
                     items={serviceItems}
                     textColor="#ffffff"
