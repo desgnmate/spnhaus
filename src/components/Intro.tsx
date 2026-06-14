@@ -18,31 +18,25 @@ export default function Intro() {
                 // Initial state
                 gsap.set(words, { opacity: 0, filter: "blur(10px)" });
 
-                // Build the tween first so we can measure its total time
-                const tl = gsap.timeline({ paused: true });
+                // Timeline scrubs as user scrolls through the pin distance
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top top",
+                        end: () => `+=${window.innerHeight * 3}`,
+                        pin: true,
+                        scrub: true,
+                        pinSpacing: true,
+                        anticipatePin: 1,
+                    }
+                });
+
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
                     stagger: 0.05,
                     duration: 0.4,
                     ease: "power2.out"
-                });
-
-                // Lock section until animation completes
-                ScrollTrigger.create({
-                    trigger: containerRef.current,
-                    start: "top top",
-                    end: () => `+=${window.innerHeight * 3}`,
-                    pin: true,
-                    pinSpacing: true,
-                    anticipatePin: 1,
-                    onEnter: () => {
-                        tl.restart();
-                    },
-                    onLeaveBack: () => {
-                        tl.progress(0).pause();
-                        gsap.set(words, { opacity: 0, filter: "blur(10px)" });
-                    },
                 });
             }
         }, containerRef);
