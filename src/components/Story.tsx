@@ -119,11 +119,11 @@ export default function Story() {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: () => `+=${window.innerHeight * (isMobile ? 0.5 : 1.5)}`, // Much shorter pin on mobile
+                    end: () => `+=${window.innerHeight * (isMobile ? 0.3 : 0.5)}`,
                     pin: true,
-                    scrub: isMobile ? false : true, // Disable scrub on mobile for instant scroll-through
+                    scrub: false,
                     fastScrollEnd: true,
-                    pinSpacing: isMobile ? false : true, // No extra spacing on mobile
+                    pinSpacing: false,
                     anticipatePin: 1,
                     toggleActions: "play none none reverse",
                 }

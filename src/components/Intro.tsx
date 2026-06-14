@@ -23,11 +23,11 @@ export default function Intro() {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",      // Start when the top of section hits top of viewport
-                        end: () => `+=${window.innerHeight * (window.innerWidth < 768 ? 0.6 : 1.5)}`, // Shorter pin on mobile
-                        pin: true,             // Pin the section
-                        scrub: window.innerWidth < 768 ? false : 1, // Disable scrub on mobile for faster scroll
-                        fastScrollEnd: true,   // Snap to end on fast scrolls
-                        pinSpacing: window.innerWidth < 768 ? false : true, // No extra spacing on mobile
+                        end: () => `+=${window.innerHeight * 0.3}`,
+                        pin: true,
+                        scrub: false,
+                        fastScrollEnd: true,
+                        pinSpacing: false,
                         anticipatePin: 1,
                     }
                 });

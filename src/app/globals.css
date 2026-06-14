@@ -26,7 +26,6 @@
 
 /* ---------- Base Styles ---------- */
 html {
-  scroll-behavior: smooth;
   background: var(--bg-primary);
 }
 

@@ -42,23 +42,7 @@ export default function AboutStrip() {
         const ctx = gsap.context(() => {
             const isMobile = window.innerWidth < 768;
 
-            // Horizontal text shift on scroll - desktop only
-            if (textRef.current && !isMobile) {
-                gsap.fromTo(textRef.current,
-                    { x: 0 },
-                    {
-                        x: 0, // Keep static or add subtle movement if desired
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true,
-                        },
-                    }
-                );
-            }
-
-            // Images subtle scale on scroll - desktop only
+            // Images subtle scale on scroll - skip on mobile, simple fade on desktop
             if (!isMobile) {
                 const imgs = sectionRef.current?.querySelectorAll(".strip-img");
                 imgs?.forEach((img) => {
