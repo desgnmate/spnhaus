@@ -18,26 +18,31 @@ export default function Intro() {
                 // Initial state
                 gsap.set(words, { opacity: 0, filter: "blur(10px)" });
 
-                // Create a timeline that is controlled by the ScrollTrigger
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: "top top",
-                        end: () => `+=${window.innerHeight * 2}`,
-                        pin: true,
-                        scrub: true,
-                        pinSpacing: false,
-                        anticipatePin: 1,
-                    }
-                });
-
-                // Animate words to opacity 1 and clear blur sequentially
+                // Build the tween first so we can measure its total time
+                const tl = gsap.timeline({ paused: true });
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
                     stagger: 0.05,
                     duration: 0.4,
                     ease: "power2.out"
+                });
+
+                // Lock section until animation completes
+                ScrollTrigger.create({
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: () => `+=${window.innerHeight * 3}`,
+                    pin: true,
+                    pinSpacing: false,
+                    anticipatePin: 1,
+                    onEnter: () => {
+                        tl.restart();
+                    },
+                    onLeaveBack: () => {
+                        tl.progress(0).pause();
+                        gsap.set(words, { opacity: 0, filter: "blur(10px)" });
+                    },
                 });
             }
         }, containerRef);
