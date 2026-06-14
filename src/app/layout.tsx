@@ -110,7 +110,7 @@ export default function RootLayout({
     return (
         <html lang="en-AU">
             <head>
-                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
                 <StructuredData />
             </head>
             <body className={`${sora.variable} ${druk.variable} ${drukWideBold.variable} font-sans antialiased bg-black text-white`}>
