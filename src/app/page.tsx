@@ -8,6 +8,7 @@ import AboutStrip from "@/components/AboutStrip";
 import Story from "@/components/Story";
 import Footer from "@/components/Footer";
 import GrainOverlay from "@/components/GrainOverlay";
+import GradualBlur from "@/components/GradualBlur";
 
 const eventImages = [
     { src: "/images/events/akiras-arcade.webp", alt: "AKIRA'S ARCADE event" },
@@ -39,6 +40,10 @@ export default function Home() {
     return (
         <main className="relative">
             <GrainOverlay />
+            <GradualBlur
+                preset="page-footer"
+                opacity={0.7}
+            />
             <Hero />
             <Intro />
             <section className="relative w-full h-screen bg-black">
