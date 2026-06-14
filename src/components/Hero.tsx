@@ -63,10 +63,9 @@ export default function Hero() {
                 });
             }
 
-            // Parallax on scroll
+            // Logo visibility based on scroll
             gsap.registerPlugin(ScrollTrigger);
 
-            // Logo visibility based on scroll
             ScrollTrigger.create({
                 trigger: sectionRef.current,
                 start: "bottom top",
@@ -75,28 +74,6 @@ export default function Hero() {
                 onLeaveBack: () => setShowLogo(false),
             });
 
-            const isMobile = window.innerWidth < 768;
-
-            gsap.to(bgRef.current, {
-                y: 150,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: isMobile ? false : true, // Disable scrub on mobile
-                },
-            });
-
-            gsap.to(titleRef.current, {
-                y: 80,
-                opacity: 0,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top top",
-                    end: "60% top",
-                    scrub: isMobile ? false : true, // Disable scrub on mobile
-                },
-            });
         }, sectionRef);
 
         return () => ctx.revert();
