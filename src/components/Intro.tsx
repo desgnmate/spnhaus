@@ -23,7 +23,7 @@ export default function Intro() {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",
-                        end: () => `+=${window.innerHeight * 1.2}`,
+                        end: () => `+=${window.innerHeight * 2}`,
                         pin: true,
                         scrub: true,
                         pinSpacing: false,
@@ -35,8 +35,8 @@ export default function Intro() {
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
-                    stagger: 0.08,
-                    duration: 0.5,
+                    stagger: 0.05,
+                    duration: 0.4,
                     ease: "power2.out"
                 });
             }
