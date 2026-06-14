@@ -34,7 +34,7 @@ export default function Intro() {
                     start: "top top",
                     end: () => `+=${window.innerHeight * 3}`,
                     pin: true,
-                    pinSpacing: false,
+                    pinSpacing: true,
                     anticipatePin: 1,
                     onEnter: () => {
                         tl.restart();
