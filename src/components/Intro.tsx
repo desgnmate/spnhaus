@@ -23,10 +23,10 @@ export default function Intro() {
                     scrollTrigger: {
                         trigger: containerRef.current,
                         start: "top top",
-                        end: () => `+=${window.innerHeight * 0.6}`,
+                        end: () => `+=${window.innerHeight * 1.2}`,
                         pin: true,
+                        scrub: true,
                         pinSpacing: false,
-                        toggleActions: "play none none reverse",
                         anticipatePin: 1,
                     }
                 });
@@ -35,21 +35,9 @@ export default function Intro() {
                 tl.to(words, {
                     opacity: 1,
                     filter: "blur(0px)",
-                    stagger: 0.06,
-                    duration: 0.6,
+                    stagger: 0.08,
+                    duration: 0.5,
                     ease: "power2.out"
-                });
-
-                // Blur fade-out on scroll exit
-                gsap.to(textRef.current, {
-                    opacity: 0,
-                    filter: "blur(12px)",
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: "top+=40% top",
-                        end: "bottom top",
-                        scrub: true,
-                    },
                 });
             }
         }, containerRef);
