@@ -58,25 +58,6 @@ body::after {
   background-size: 128px 128px;
 }
 
-/* ---------- Marquee ---------- */
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee-scroll 25s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
 /* ---------- Text Stroke Utility ---------- */
 .text-stroke {
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3);

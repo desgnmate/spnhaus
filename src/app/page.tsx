@@ -3,7 +3,6 @@
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import DomeGallery from "@/components/DomeGallery";
-import Marquee from "@/components/Marquee";
 import FlowingMenu from "@/components/FlowingMenu";
 import AboutStrip from "@/components/AboutStrip";
 import Story from "@/components/Story";
@@ -58,7 +57,6 @@ export default function Home() {
                     segments={45}
                 />
             </section>
-            <Marquee />
             <section className="relative w-full h-screen bg-black">
                 <FlowingMenu
                     items={serviceItems}
