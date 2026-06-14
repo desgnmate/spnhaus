@@ -66,7 +66,7 @@ export default function Home() {
                         Curated DJ sets for every space and occasion across Melbourne.
                     </p>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 pb-16 md:pb-24">
                     <FlowingMenu
                     items={serviceItems}
                     textColor="#ffffff"
