@@ -40,12 +40,17 @@ export default function Home() {
                 <div className="absolute top-24 md:top-32 left-6 md:left-12 z-10 mt-6 w-8 h-px bg-white/15" />
                 <DomeGallery
                     images={eventImages}
+                    fit={0.75}
+                    fitBasis="max"
+                    minRadius={800}
+                    padFactor={0.15}
                     overlayBlurColor="#000000"
                     imageBorderRadius="20px"
                     openedImageBorderRadius="20px"
-                    openedImageWidth="350px"
-                    openedImageHeight="450px"
+                    openedImageWidth="400px"
+                    openedImageHeight="500px"
                     grayscale={true}
+                    segments={40}
                 />
             </section>
             <Marquee />
