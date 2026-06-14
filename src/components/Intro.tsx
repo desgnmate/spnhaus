@@ -39,6 +39,18 @@ export default function Intro() {
                     duration: 0.6,
                     ease: "power2.out"
                 });
+
+                // Blur fade-out on scroll exit
+                gsap.to(textRef.current, {
+                    opacity: 0,
+                    filter: "blur(12px)",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top+=40% top",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                });
             }
         }, containerRef);
 
